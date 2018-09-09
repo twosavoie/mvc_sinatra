@@ -4,14 +4,20 @@ get '/:birthdate' do
   setup_index_view
 end
 
+# print the numerology message
+get '/message/:birth_path_num' do
+  birth_path_num = params[:birth_path_num].to_i
+  @message = Person.get_message(birth_path_num)
+  erb :index
+end
 
 # when page loads, get & print the form
-get '/' do #same
+get '/' do
   erb :form
 end
 
 # After checking for valid input redirect to print numerology message. If the input is invalid, print an error message. Also use redirect to prevent user from inputing the same info repeatedly
-post '/' do #same
+post '/' do
   birthdate = params[:birthdate].gsub("-","")
   if Person.valid_birthdate(birthdate)
     birth_path_num = Person.get_birth_path_num(birthdate)
@@ -22,19 +28,12 @@ post '/' do #same
   end
 end
 
-# print the numerology message
-get '/message/:birth_path_num' do #same
-  birth_path_num = params[:birth_path_num].to_i
-  @message = Person.get_message(birth_path_num)
-  erb :index
-end
-
 def setup_index_view
 	birthdate = params[:birthdate]
 	birth_path_num = Person.get_birth_path_num(birthdate)
 	@message = Person.get_message(birth_path_num)
   erb :index
-end 
+end
 
 # not necessary to script(form). allowed url localhost:4567/birthdate entered by user. however, testing does not work unless it is included.
 #get '/:birthdate' do #not in SK answer code
