@@ -1,6 +1,21 @@
 <h1>People</h1>
-<ul>
-  <% @people.each do |person| %>
-    <li><%= "#{person.first_name} #{person.last_name} - #{person.birthdate}" %></li>
+<table>
+  <thread>
+    <th>Name</th>
+    <th>Birthdate</th>
+  </thread>
+  <tbody>
+    <% @people.each do |person| %>
+    <tr>
+      <td>
+        <a href="<%= "/people/#{person.id}" %>">
+          <%= "#{person.first_name} #{person.last_name}" %>
+        </a>
+      </td>
+      <td>
+        <%= "#{person.birthdate}" %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+</tbody>
+</table>
