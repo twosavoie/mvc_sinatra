@@ -1,3 +1,11 @@
-<h1><%= "#{@person.first_name} #{@person.last_name}" %></h1>
-<p>Birthdate: <%= "#{@person.birthdate}" %></p>
-<p><%= "#{@message}" %></p>
+<!-- appears after new resource is created -->
+<div class="message">
+  <h1 class="form-header"><%= "#{@person.first_name} #{@person.last_name}" %></h1>
+  <p>Birthdate: <%= "#{@person.birthdate}" %></p>
+  <p id="num-message"><%= "#{@message}" %></p>
+</div>
+
+<div>
+  <h3 class="form-header">Did you know?</h3>
+  <p class="text-block">Pythagoras and other philosophers of the time believed that because mathematical concepts were more "practical" (easier to regulate and classify) than physical ones, they had greater actuality. St. Augustine of Hippo (A.D. 354-430) wrote "Numbers are the Universal language offered by the deity to humans as confirmation of the truth." Similar to Pythagoras, he too believed that everything had numerical relationships and it was up to the mind to seek and investigate the secrets of these relationships or have them revealed by divine grace. = Wikipedia</p>
+</div>

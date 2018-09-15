@@ -1,0 +1,81 @@
+/*font-family: 'Open Sans', sans-serif;
+font-family: 'Courgette', cursive;
+#50327c color description : Dark moderate violet.
+#ffffff color description : White. */
+
+
+.main {
+  background-color: #f3eff9;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+p, label, th {
+  color: #50327c;
+}
+
+.header h1 {
+  font-family: 'Courgette', cursive;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 60px;
+  color: #50327c;
+}
+
+.header h2 {
+  text-align: center;
+  color: #50327c;
+}
+
+.header p {
+  text-align: center;
+}
+
+.form-header {
+  text-align: center;
+  color: #50327c;
+  margin-bottom: 30px;
+}
+
+.text-block {
+  width: 60%;
+  margin: auto;
+  text-align: center;
+}
+
+.new-person {
+  text-align: center;
+}
+
+.edit-person {
+  text-align: center;
+}
+
+.ask-date {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+
+label[for=Birthdate] {
+  padding-bottom: 20px;
+}
+
+input[type=date] {
+  width: 30%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.message p {
+  text-align: center;
+}
+
+#num-message {
+  width: 50%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}

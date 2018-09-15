@@ -1,10 +1,14 @@
-<h1>People</h1>
-<table>
+<div class="header">
+  <h2>People</h2>
+</div>
+<table class="table">
   <thead>
-    <th>Name</th>
-    <th>Birthdate</th>
-    <th>Edit</th>
-    <th>Delete</th>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Birthdate</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
   </thead>
   <tbody>
      <% @people.each do |person| %>
