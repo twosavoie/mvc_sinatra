@@ -1,5 +1,7 @@
 class Person < ActiveRecord::Base
 
+  validates_presence_of :first_name, :last_name, :birthdate
+
   # pass in the birthdate variable (from form input) and reduce to a single digit
   def self.get_birth_path_num(birthdate)
       number = birthdate[0].to_i + birthdate[1].to_i + birthdate[2].to_i + birthdate[3].to_i + birthdate[4].to_i + birthdate[5].to_i + birthdate[6].to_i + birthdate[7].to_i
@@ -41,7 +43,7 @@ class Person < ActiveRecord::Base
           message = "Uh oh! Your birth path number is not 1-9!"
       end
   end
- 
+
   # Is the user input 8 numbers?
   def self.valid_birthdate(input)
   #  if input.length == 8 && input.match(/^[0-9]+[0-9]$/) my code
