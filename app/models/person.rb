@@ -48,10 +48,10 @@ class Person < ActiveRecord::Base
   def self.valid_birthdate(input)
   #  if input.length == 8 && input.match(/^[0-9]+[0-9]$/) my code
   # SK code:
-    if(input.length == 8 && !input.match(/^[0-9]+[0-9]$/).nil?)
+   if(input.length == 8 && !input.match(/^[0-9]+[0-9]$/).nil?)
       true
     else
-      false
+     false
     end
   end
 

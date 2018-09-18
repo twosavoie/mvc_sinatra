@@ -18,7 +18,8 @@ end
 
 # After checking for valid input redirect to print numerology message. If the input is invalid, print an error message. Also use redirect to prevent user from inputing the same info repeatedly
 post '/' do
-  birthdate = params[:birthdate].gsub("-","")
+#  birthdate = params[:birthdate].gsub("-","")
+  birthdate = params[:birthdate].tr("/-", "") #This allows ""-/ in /
   if Person.valid_birthdate(birthdate)
     birth_path_num = Person.get_birth_path_num(birthdate)
     redirect "/message/#{birth_path_num}"
