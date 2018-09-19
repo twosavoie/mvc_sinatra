@@ -10,21 +10,21 @@ get '/people/new' do
 end
 
 post '/people' do
-birthdate = params[:birthdate].tr("/-", "") #This allows ""-/ in /
-if Person.valid_birthdate(birthdate)
- birth_path_num = Person.get_birth_path_num(birthdate)
-  redirect "/message/#{birth_path_num}"
-else
-  @error = "You should enter a valid birthdate in the form of mmddyyyy."
-  erb :form #don't think I need this
-end
+#birthdate = params[:birthdate].tr("/-", "") #This allows ""-/ in /
+#if Person.valid_birthdate(birthdate)
+ #birth_path_num = Person.get_birth_path_num(birthdate)
+  #redirect "/message/#{birth_path_num}"
+#else
+#  @error = "You should enter a valid birthdate in the form of mmddyyyy."
+#  erb :form #don't think I need this
+#end
 #  if params[:birthdate].include?("-")
 #    birthdate = params[:birthdate]
 #  else
 #    birthdate = Date.strptime(params[:birthdate], "%m%d%Y")
 #  end
 
-  @person = Person.new(first_name: params[:first_name], last_name: params[:last_name], birthdate: birthdate)
+  @person = Person.new(first_name: params[:first_name], last_name: params[:last_name], birthdate: params[:birthdate].tr("/-", ""))
 
   if @person.valid? #use to check if the date is actually there
     @person.save
