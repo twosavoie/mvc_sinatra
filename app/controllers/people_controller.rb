@@ -10,10 +10,18 @@ get '/people/new' do
 end
 
 post '/people' do
-#  birthdate = params[:birthdate].tr("/-", "")
-#birthdate = Date.strptime(params[:birthdate].gsub("/''", "-"), "%m%d%Y") #try tomorrow #need to convert string to date. Putting in date works already
+#  birthdate = params[:birthdate].tr("/", "")
+require 'date'
+
+if params[:birthdate].include?("/")
+  birthdate = params[:birthdate]
+else
+  birthdate = Date.strptime(params[:birthdate], "%m%d%Y")
 #puts birthdate.inspect
-  @person = Person.new(first_name: params[:first_name], last_name: params[:last_name], birthdate: params[:birthdate])
+end
+
+
+  @person = Person.new(first_name: params[:first_name], last_name: params[:last_name], birthdate: birthdate)
   puts params.inspect
   if @person.valid?
     @person.save
