@@ -10,23 +10,15 @@ get '/people/new' do
 end
 
 post '/people' do
-#  birthdate = params[:birthdate].tr("/", "")
-require 'date'
 
-if params[:birthdate].include?("/")
-  birthdate = params[:birthdate]
-else
-  birthdate = Date.strptime(params[:birthdate], "%m%d%Y")
-#puts birthdate.inspect
-end
-
-
-  @person = Person.new(first_name: params[:first_name], last_name: params[:last_name], birthdate: birthdate)
+#not for nothing but this (skipping the above if/else stmt) works for Chrome, Firefox, Opera, and parts of Safari including blank. Need to change date format: numbers are yyyymmdd, dashes and slashes are ddmmyyyy,
+  @person = Person.new(first_name: params[:first_name], last_name: params[:last_name], birthdate: params[:birthdate]) #not just birthdate
   puts params.inspect
   if @person.valid?
     @person.save
     redirect "/people/#{@person.id}"
   else
+#    @errors = ''  not in SK answer
     @person.errors.full_messages.each do |msg|
     @errors = "#{@errors} #{msg}."
     puts params[:birthdate].inspect
@@ -74,6 +66,22 @@ get '/people/:id' do
   erb :"/people/show"
 end
 
+#*****
+#birthdate = params[:birthdate].tr("/", "") #was ("/-", "") doesn't make slashes possible.
+#require 'date' doesn't seem necessary
+
+#Use it all: why does this break so much? the only thing it makes better is numbers only which now is the correct mmddyyyy format. Blank fails in Chrome & Sinatra, /'s fail in Sinatra, Dashes only work in ddmmyyyy format.
+#if params[:birthdate].include?("-")
+#  birthdate = params[:birthdate]
+#else
+#birthdate = params[:birthdate].gsub("-", "")
+#  birthdate = Date.strptime(params[:birthdate], "%m%d%Y")
+#this only: Chrome breaks. Safari numbers only works, all hashes breaks, all slashes breaks.
+#puts birthdate.inspect
+#end
+#*****
+
+#*****
 #birthdate = params[:birthdate].gsub("/-", " ") #This allows ""-/ in /
 #if Person.valid_birthdate(birthdate)
  #birth_path_num = Person.get_birth_path_num(birthdate)
