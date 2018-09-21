@@ -1,3 +1,7 @@
+This app works correctly in Chrome, Firefox, & Opera. Safari is different. It doesn't automatically create a datepicker from <input date>. In Safari, just numbers is understood as yyyymmdd, dashes and slashes as ddmmyyyy. I havent' figured out a way to keep it working in other browsers and parse the input from Safari into the correct format. 
+
+A problem for another day.
+
 This is a Ruby app using Sinatra and ActiveRecord
 This is the flow:
 
